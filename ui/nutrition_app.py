@@ -84,18 +84,42 @@ class NutritionApp(QWidget):
             }
         """
 
-        # 🏋️‍♂️ Weight input field
-        self.weight_label = QLabel("Weight (g):")
-        self.weight_label.setStyleSheet("font-size: 13px; color: white;")
-        self.weight_input = QLineEdit()
-        self.weight_input.setText("100")  # Default 100g
-        self.weight_input.setFixedWidth(60)
-        self.weight_input.setStyleSheet("background-color: #1f1f1f; color: white; padding: 4px;")
-
+        # 🏋️‍♂️ Weight input field (Improved Design)
+        weight_container = QWidget()
+        weight_container.setStyleSheet("""
+            background-color: #1e1e1e;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            padding: 6px;
+        """)
         weight_layout = QHBoxLayout()
-        weight_layout.addWidget(self.weight_label)
-        weight_layout.addWidget(self.weight_input)
-        info_layout.addLayout(weight_layout)
+        weight_layout.setContentsMargins(8, 2, 8, 2)
+        weight_layout.setSpacing(10)
+
+        weight_label = QLabel("Weight (g):")
+        weight_label.setStyleSheet("font-size: 14px; color: #ffffff; font-weight: bold;")
+
+        weight_input = QLineEdit()
+        weight_input.setText("100")
+        weight_input.setFixedWidth(80)
+        weight_input.setStyleSheet("""
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #00ffcc;
+            border-radius: 6px;
+        """)
+
+        weight_layout.addWidget(weight_label)
+        weight_layout.addWidget(weight_input)
+        weight_container.setLayout(weight_layout)
+
+        info_layout.addWidget(weight_container)
+
+        # Assign to self (if needed later)
+        self.weight_input = weight_input
+        self.weight_label = weight_label
 
         self.add_cart_btn = QPushButton("➕ Add to Cart")
         self.add_cart_btn.setStyleSheet(style_button())

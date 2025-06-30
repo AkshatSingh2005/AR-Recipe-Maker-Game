@@ -79,3 +79,4 @@ class MainMenu(QWidget):
         )
     def show_recipe_scanner(self):
         self.recipe_window.show()
+        self.hide() 
